@@ -1,5 +1,36 @@
 document.addEventListener("DOMContentLoaded", function(event){
     game();
+    var canvas = document.getElementById('gameScreen');
+
+    fullscreenify(canvas);
+
+
+    function fullscreenify(canvas) {
+        //  var style = canvas.getAttribute('style') || '';
+
+        window.addEventListener('resize', function () {resize(canvas);}, false);
+
+        resize(canvas);
+
+    }
+
+
+    function resize(canvas) {
+        var scale = {x: 1, y: 1};
+        var style = "border:1px solid #c3c3c3;background-color:#000;";
+        scale.x = (window.innerWidth - 10) / canvas.width;
+        scale.y = (window.innerHeight - 10) / canvas.height;
+
+        if (scale.x < 1 || scale.y < 1) {
+            scale = '1, 1';
+        } else if (scale.x < scale.y) {
+            scale = scale.x + ', ' + scale.x;
+        } else {
+            scale = scale.y + ', ' + scale.y;
+        }
+
+        canvas.setAttribute('style', style + ' ' + '-ms-transform-origin: center top; -webkit-transform-origin: center top; -moz-transform-origin: center top; -o-transform-origin: center top; transform-origin: center top; -ms-transform: scale(' + scale + '); -webkit-transform: scale3d(' + scale + ', 1); -moz-transform: scale(' + scale + '); -o-transform: scale(' + scale + '); transform: scale(' + scale + ');');
+    }
 });
 
 function game() {
@@ -23,7 +54,7 @@ function game() {
     var playerSpeedGravity = 2;
     var playerHeight = 40;
     var playerWidth = 20;
-    var playerStartY = canvasHeight - (130 + playerHeight/2);
+    var playerStartY = canvasHeight - (111.4 + playerHeight/2);
     var jumpHeight = 40;
     var playerJumpHeight = playerStartY - jumpHeight;
 
