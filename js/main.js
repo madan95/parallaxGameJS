@@ -273,6 +273,8 @@ function game() {
     startGame();
 
     function startGame() {
+        level = 0;
+        lives = 10
         createGameWorld();
     }
 
