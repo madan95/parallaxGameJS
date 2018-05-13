@@ -205,7 +205,7 @@ function game() {
             }
 
             if(this.type === 'horiLeft'){
-                if(this.x < -100){
+                if(this.x > canvasWidth + 100){
                     score.update();
                     this.x = -100;
                     this.speedX = (getRandom(11, 5));
